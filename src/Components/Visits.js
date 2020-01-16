@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card as div } from "react-bootstrap";
 import moment from "moment";
 import DataList from "./DataList";
 import axios from "axios";
@@ -20,15 +20,15 @@ const Visits = props => {
 
   const visits = props.data.map((visit, index) => (
     <div class="col-xl " style={{ textAlign: "center" }}>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>{visit.type}</Card.Title>
-          <Card.Text>
+      <div>
+        <div>
+          <div>{visit.type}</div>
+          <div>
             <p>
               Termin: {moment(visit.startTime).format("MM-DD-YY HH:mm ")} -{" "}
               {moment(visit.endTime).format("HH:mm")}
             </p>
-          </Card.Text>
+          </div>
           <Button
             variant="primary"
             onClick={() => {
@@ -37,14 +37,14 @@ const Visits = props => {
           >
             Zarezerwuj
           </Button>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   ));
   return (
-    <div class="container">
+    <div className="container visits-header">
       <h1>Dostępne wizyty</h1>
-      {visits}
+      <div className="visits">{visits}</div>
     </div>
   );
 };

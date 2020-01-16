@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.visits {
+  display: flex;
+  flex-wrap: wrap;
+}
+.visits div {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.visits-header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
