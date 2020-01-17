@@ -3,16 +3,12 @@ import axios from "axios";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
-const Login = props => {
+const LoginAdmin = props => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isSuccessLogin, setIsSuccessLogin] = useState(false);
   let history = useHistory();
-  useEffect(() => {
-    sessionStorage.getItem("isLogged") === "true"
-      ? history.push("/visits")
-      : console.log("");
-  }, []);
+
   const handleLogin = () => {
     let statusCode = "";
     axios
@@ -28,7 +24,7 @@ const Login = props => {
           sessionStorage.setItem("isLogged", "true");
         }
       });
-    history.push("/visits");
+    history.push("/admin");
   };
   const getMyVisits = () => {
     fetch("https://localhost:44396/visit/userVisits", {
@@ -86,4 +82,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default LoginAdmin;

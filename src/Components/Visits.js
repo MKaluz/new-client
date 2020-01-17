@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card as div } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import moment from "moment";
 import DataList from "./DataList";
 import axios from "axios";
@@ -19,7 +19,7 @@ const Visits = props => {
   };
 
   const visits = props.data.map((visit, index) => (
-    <div class="col-xl " style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center" }}>
       <div>
         <div>
           <div>{visit.type}</div>

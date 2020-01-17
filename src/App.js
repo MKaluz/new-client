@@ -6,6 +6,8 @@ import "./App.css";
 import Visits from "./Components/Visits";
 import MyVisits from "./Components/MyVisits";
 import Register from "./Components/Register";
+import LoginAdmin from "./Components/LoginAdmin";
+import Admin from "./Components/Admin";
 import axios from "axios";
 import About from "./Components/About";
 
@@ -19,6 +21,7 @@ class App extends React.Component {
       isLogged: false
     };
     this.setData = this.setData.bind(this);
+    this.setMyData = this.setMyData.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +49,10 @@ class App extends React.Component {
     this.setState({ token: _token, isLogged: true });
   };
 
+  setMyData = visits => {
+    this.setState({ myData: visits });
+  };
+
   render() {
     return (
       <div class="container">
@@ -53,7 +60,11 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Login onTokenChange={this.setToken} token={this.state.token} />
+              <Login
+                onTokenChange={this.setToken}
+                token={this.state.token}
+                setMyData={this.setMyData}
+              />
             </Route>
             <Route path="/visits">
               <Visits data={this.state.data} token={this.state.token} />
@@ -66,6 +77,15 @@ class App extends React.Component {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/login/admin">
+              <LoginAdmin
+                onTokenChange={this.setToken}
+                token={this.state.token}
+              />
+            </Route>
+            <Route path="/admin">
+              <Admin token={this.state.token} data={this.state.data} />
             </Route>
           </Switch>
         </Router>
